@@ -1,28 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7b3kw6qanas7"]
+[gd_scene load_steps=4 format=3 uid="uid://c7b3kw6qanas7"]
 
 [ext_resource type="Texture2D" uid="uid://m3mlxn1w73ca" path="res://assets/recycle bin.jpg" id="1_1it6p"]
 [ext_resource type="Texture2D" uid="uid://7puaeiocmmge" path="res://assets/paper.png" id="2_twnah"]
 [ext_resource type="Script" path="res://Paper.gd" id="3_dwmax"]
-[ext_resource type="Script" path="res://BinCollision.gd" id="4_ql0ic"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tt8fq"]
-radius = 195.608
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Recycle Bin" type="Sprite2D" parent="."]
-position = Vector2(574, 545)
+position = Vector2(494, 2283)
 scale = Vector2(0.655556, 0.594444)
 texture = ExtResource("1_1it6p")
 
 [node name="Paper" type="Sprite2D" parent="."]
-position = Vector2(178, 192)
+position = Vector2(809, 1578)
 scale = Vector2(0.066896, 0.0468418)
 texture = ExtResource("2_twnah")
 script = ExtResource("3_dwmax")
-
-[node name="BinCollision" type="CollisionShape2D" parent="Paper"]
-position = Vector2(5919.63, 7536.01)
-scale = Vector2(9.79962, 12.6905)
-shape = SubResource("CircleShape2D_tt8fq")
-script = ExtResource("4_ql0ic")
