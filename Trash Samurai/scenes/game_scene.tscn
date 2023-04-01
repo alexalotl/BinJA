@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://r6a3iim6ege5"]
+[gd_scene load_steps=7 format=3 uid="uid://be2y31r46g186"]
 
 [ext_resource type="Script" path="res://scripts/Bin.gd" id="1_3w8vp"]
 [ext_resource type="Texture2D" uid="uid://m3mlxn1w73ca" path="res://assets/recycle bin.jpg" id="1_k80uc"]
@@ -54,7 +54,6 @@ script = ExtResource("1_3w8vp")
 texture = ExtResource("1_k80uc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bin"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_r405o")
 
 [node name="Rubbish" type="RigidBody2D" parent="." groups=["rubbish"]]

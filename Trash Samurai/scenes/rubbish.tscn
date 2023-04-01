@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkjdjlmvcu83i"]
+[gd_scene load_steps=4 format=3 uid="uid://dkjdjlmvcu83i"]
+
+[ext_resource type="Script" path="res://scripts/rubbish.gd" id="1_di0yt"]
+[ext_resource type="Texture2D" uid="uid://u6kml0e4gkej" path="res://icon.svg" id="2_b7al3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5k80w"]
 
 [node name="Rubbish" type="RigidBody2D"]
+script = ExtResource("1_di0yt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5k80w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_b7al3")
