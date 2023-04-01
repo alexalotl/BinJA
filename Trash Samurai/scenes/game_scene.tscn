@@ -26,7 +26,7 @@ offset_right = 312.0
 offset_bottom = 175.0
 
 [node name="Bin" type="Area2D" parent="."]
-position = Vector2(535, 531)
+position = Vector2(246, 1075)
 scale = Vector2(0.655556, 0.594444)
 script = ExtResource("1_3w8vp")
 
@@ -37,5 +37,6 @@ texture = ExtResource("1_k80uc")
 shape = SubResource("RectangleShape2D_r405o")
 
 [node name="Rubbish2" parent="." instance=ExtResource("4_fs3u3")]
+position = Vector2(-6, 602)
 
 [connection signal="body_entered" from="Bin" to="Bin" method="_on_body_entered"]

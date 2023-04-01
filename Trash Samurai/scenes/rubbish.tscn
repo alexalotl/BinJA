@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://7puaeiocmmge" path="res://assets/paper.png" id="2_hw0ac"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5k80w"]
+radius = 80.0
 
-[node name="Rubbish" type="RigidBody2D"]
+[node name="Rubbish" type="RigidBody2D" groups=["pickable"]]
+input_pickable = true
 script = ExtResource("1_di0yt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
