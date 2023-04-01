@@ -28,7 +28,7 @@ offset_right = 312.0
 offset_bottom = 175.0
 
 [node name="Bin" type="Area2D" parent="."]
-position = Vector2(535, 531)
+position = Vector2(256, 1073)
 scale = Vector2(0.655556, 0.594444)
 script = ExtResource("1_3w8vp")
 
