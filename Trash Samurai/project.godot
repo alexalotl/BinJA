@@ -25,6 +25,7 @@ window/stretch/mode="canvas_items"
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+Global="*res://scripts/Global.gd"
 
 [rendering]
 
