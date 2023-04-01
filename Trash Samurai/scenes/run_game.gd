@@ -13,7 +13,7 @@ func _process(delta):
 
 
 func _on_spawn_timer_timeout():
-	rubbish = _rubbish.instantiate()
+	var rubbish = _rubbish.instantiate()
 	rubbish.position = Vector2(-100, 500)
-	add_child()
+	add_child(rubbish)
 	pass # Replace with function body.
