@@ -11,22 +11,14 @@ config_version=5
 [application]
 
 config/name="Trash Samurai"
-run/main_scene="res://scenes/game_scene.tscn"
+run/main_scene="res://scenes/rubbish.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
-[display]
+[autoload]
 
-window/size/viewport_width=540
-window/size/viewport_height=1200
-window/handheld/orientation=1
-window/stretch/mode="canvas_items"
-
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
+Global="*res://scripts/Global.gd"
 
 [rendering]
 
 renderer/rendering_method="mobile"
-textures/vram_compression/import_etc2_astc=true

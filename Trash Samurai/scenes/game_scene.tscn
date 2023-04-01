@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://be2y31r46g186"]
+[gd_scene load_steps=6 format=3 uid="uid://be2y31r46g186"]
 
 [ext_resource type="Script" path="res://scripts/Bin.gd" id="1_3w8vp"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="1_c1k6r"]
 [ext_resource type="Texture2D" uid="uid://m3mlxn1w73ca" path="res://assets/recycle bin.jpg" id="1_k80uc"]
 [ext_resource type="PackedScene" uid="uid://dkjdjlmvcu83i" path="res://scenes/rubbish.tscn" id="4_fs3u3"]
 
@@ -24,6 +25,11 @@ offset_left = 40.0
 offset_top = 60.0
 offset_right = 312.0
 offset_bottom = 175.0
+
+[node name="Score" type="Label" parent="CanvasLayer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+text = "Score: 0"
+script = ExtResource("1_c1k6r")
 
 [node name="Bin" type="Area2D" parent="."]
 position = Vector2(246, 1075)
