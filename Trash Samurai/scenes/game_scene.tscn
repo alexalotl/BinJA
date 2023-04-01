@@ -1,31 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://be2y31r46g186"]
+[gd_scene load_steps=5 format=3 uid="uid://be2y31r46g186"]
 
 [ext_resource type="Script" path="res://scripts/Bin.gd" id="1_3w8vp"]
 [ext_resource type="Texture2D" uid="uid://m3mlxn1w73ca" path="res://assets/recycle bin.jpg" id="1_k80uc"]
-[ext_resource type="Texture2D" uid="uid://7puaeiocmmge" path="res://assets/paper.png" id="2_6w2sr"]
+[ext_resource type="PackedScene" uid="uid://dkjdjlmvcu83i" path="res://scenes/rubbish.tscn" id="4_fs3u3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r405o"]
 size = Vector2(400, 400)
-
-[sub_resource type="GDScript" id="GDScript_eec7p"]
-script/source = "extends RigidBody2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	look_at(get_global_mouse_position())
-	var destination = get_global_mouse_position()
-	position = destination
-	pass
-"
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_6h1oh"]
-radius = 120.0
 
 [node name="GameScene" type="Node2D"]
 
@@ -56,15 +36,6 @@ texture = ExtResource("1_k80uc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bin"]
 shape = SubResource("RectangleShape2D_r405o")
 
-[node name="Rubbish" type="RigidBody2D" parent="." groups=["rubbish"]]
-script = SubResource("GDScript_eec7p")
-
-[node name="Sprite2D" type="Sprite2D" parent="Rubbish"]
-position = Vector2(2.00006, -1)
-scale = Vector2(0.0860092, 0.0656494)
-texture = ExtResource("2_6w2sr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rubbish"]
-shape = SubResource("CircleShape2D_6h1oh")
+[node name="Rubbish2" parent="." instance=ExtResource("4_fs3u3")]
 
 [connection signal="body_entered" from="Bin" to="Bin" method="_on_body_entered"]
