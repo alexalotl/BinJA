@@ -1,15 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://co5gtxsmdpxjo"]
+[gd_scene load_steps=15 format=3 uid="uid://cst0i4twfxjal"]
 
 [ext_resource type="Texture2D" uid="uid://m3mlxn1w73ca" path="res://assets/recycle bin.jpg" id="1_1it6p"]
 [ext_resource type="Texture2D" uid="uid://7puaeiocmmge" path="res://assets/paper.png" id="2_twnah"]
 [ext_resource type="Script" path="res://Paper.gd" id="3_dwmax"]
 [ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://Font/arcadeclassic/ARCADECLASSIC.TTF" id="4_6du8l"]
 [ext_resource type="Texture2D" uid="uid://73k7cmp8sel1" path="res://assets/heart.png" id="5_u81xf"]
-[ext_resource type="Script" path="res://TextureRect.gd" id="6_vgliq"]
-[ext_resource type="Script" path="res://TextureRect2.gd" id="7_0y8vg"]
-[ext_resource type="Script" path="res://TextureRect3.gd" id="8_xbci7"]
-[ext_resource type="Script" path="res://TextureRect4.gd" id="9_28fml"]
-[ext_resource type="Script" path="res://TextureRect5.gd" id="10_jbgq2"]
 [ext_resource type="Script" path="res://Options.gd" id="11_a1yjd"]
 
 [sub_resource type="Theme" id="Theme_v2b3g"]
@@ -22,6 +17,51 @@ func lose_heart(value):
 	if (value ==1):
 	    TextureRect5.visible =false
 	    
+"
+
+[sub_resource type="GDScript" id="GDScript_48mvq"]
+script/source = "extends TextureRect
+
+func lose_heart(value):
+	if value >=5 :
+		visible =false
+		
+"
+
+[sub_resource type="GDScript" id="GDScript_8vunp"]
+script/source = "extends TextureRect
+
+func lose_heart(value):
+	if value >=4 :
+		visible =false
+		value += 1
+"
+
+[sub_resource type="GDScript" id="GDScript_bm5k2"]
+script/source = "extends TextureRect
+
+func lose_heart(value):
+	if value >=3 :
+		visible =false
+		value += 1
+"
+
+[sub_resource type="GDScript" id="GDScript_y8nrr"]
+script/source = "extends TextureRect
+
+func lose_heart(value):
+	if value >=2 :
+		visible =false
+		value += 1
+"
+
+[sub_resource type="GDScript" id="GDScript_7w8nc"]
+script/source = "extends TextureRect
+
+func lose_heart(value):
+	if value >=1 :
+		visible =false
+		value += 1
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7abv"]
@@ -73,31 +113,31 @@ text = "Life :"
 layout_mode = 2
 texture = ExtResource("5_u81xf")
 expand_mode = 3
-script = ExtResource("6_vgliq")
+script = SubResource("GDScript_48mvq")
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("5_u81xf")
 expand_mode = 3
-script = ExtResource("7_0y8vg")
+script = SubResource("GDScript_8vunp")
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("5_u81xf")
 expand_mode = 3
-script = ExtResource("8_xbci7")
+script = SubResource("GDScript_bm5k2")
 
 [node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("5_u81xf")
 expand_mode = 3
-script = ExtResource("9_28fml")
+script = SubResource("GDScript_y8nrr")
 
 [node name="TextureRect5" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("5_u81xf")
 expand_mode = 3
-script = ExtResource("10_jbgq2")
+script = SubResource("GDScript_7w8nc")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 0

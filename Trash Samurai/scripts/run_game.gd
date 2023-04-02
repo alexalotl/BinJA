@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var score_label: Label
+@export var health_container: Container
 
 var rubbish_types = ["Paper", "General", "Food", "Plastic", "Glass"]
 
@@ -9,10 +10,13 @@ var screen_width
 
 var rng
 
-var health: int = 3:
+var health: int = 5:
 	set(value):
 		health = value
-		
+		health_container.get_child(value).queue_free()
+		if health <= 0:
+			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+			
 var score: int = 0:
 	set(value):
 		score = value
@@ -38,8 +42,7 @@ func _on_spawn_timer_timeout():
 	var rubbish = _rubbish.instantiate()
 	
 	rubbish.type = rubbish_types[randi()%rubbish_types.size()]
-	var spawn_y = rng.randi_range(screen_height/1.4, screen_height/2)
-	print(spawn_y)
+	var spawn_y = rng.randi_range(screen_height/2.4, screen_height/2)
 	var spawn_x
 	var spawn_impulse_x
 	if rng.randi() % 2:
@@ -49,14 +52,17 @@ func _on_spawn_timer_timeout():
 		spawn_x = screen_width + 100
 		spawn_impulse_x = rng.randi_range(-800, -250)
 	
-	var spawn_impulse_y = -800
-	
+	var spawn_impulse_y = -600
 	rubbish.position = Vector2(spawn_x, spawn_y)
 	add_child(rubbish)
+	rubbish.missed.connect(_on_rubbish_missed)
 	rubbish.apply_impulse(Vector2(spawn_impulse_x, spawn_impulse_y))
 	
 	pass # Replace with function body.
 
+func _on_rubbish_missed():
+	health -= 1
+	
 func _on_bin_failure():
 	health -= 1
 	

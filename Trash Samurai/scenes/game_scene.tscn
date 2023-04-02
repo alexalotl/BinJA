@@ -1,14 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8r6a3giyqyk4"]
+[gd_scene load_steps=10 format=3 uid="uid://o4fd4hetv4mj"]
 
-[ext_resource type="Script" path="res://scenes/run_game.gd" id="1_4a8ui"]
+[ext_resource type="Script" path="res://scripts/run_game.gd" id="1_3u6wc"]
 [ext_resource type="PackedScene" uid="uid://gl2o125nda1q" path="res://scenes/bin.tscn" id="2_qpbvm"]
 [ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://Font/arcadeclassic/ARCADECLASSIC.TTF" id="3_pfoeq"]
 [ext_resource type="Texture2D" uid="uid://73k7cmp8sel1" path="res://assets/heart.png" id="4_3yg3m"]
-[ext_resource type="Script" path="res://TextureRect.gd" id="5_vnwdx"]
-[ext_resource type="Script" path="res://TextureRect2.gd" id="6_bc4cl"]
-[ext_resource type="Script" path="res://TextureRect3.gd" id="7_10o80"]
-[ext_resource type="Script" path="res://TextureRect4.gd" id="8_x4xk3"]
-[ext_resource type="Script" path="res://TextureRect5.gd" id="9_cbams"]
 [ext_resource type="Script" path="res://Options.gd" id="10_c2sc3"]
 
 [sub_resource type="Theme" id="Theme_a5t78"]
@@ -29,9 +24,10 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
 
-[node name="GameScene" type="Node2D" node_paths=PackedStringArray("score_label")]
-script = ExtResource("1_4a8ui")
+[node name="GameScene" type="Node2D" node_paths=PackedStringArray("score_label", "health_container")]
+script = ExtResource("1_3u6wc")
 score_label = NodePath("CanvasLayer2/Control/HBoxContainer2/Score")
+health_container = NodePath("CanvasLayer2/Control/HealthContainer/Hearts")
 
 [node name="Paper Bin" parent="." instance=ExtResource("2_qpbvm")]
 position = Vector2(837, 454)
@@ -67,7 +63,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_a5t78")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer2/Control"]
+[node name="HealthContainer" type="HBoxContainer" parent="CanvasLayer2/Control"]
 layout_mode = 1
 offset_left = 20.0
 offset_top = 10.0
@@ -75,7 +71,7 @@ offset_right = 492.0
 offset_bottom = 68.0
 script = SubResource("GDScript_qyume")
 
-[node name="Label" type="Label" parent="CanvasLayer2/Control/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer2/Control/HealthContainer"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -83,35 +79,33 @@ theme_override_fonts/font = ExtResource("3_pfoeq")
 theme_override_font_sizes/font_size = 40
 text = "Life :"
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/Control/HBoxContainer"]
+[node name="Hearts" type="HBoxContainer" parent="CanvasLayer2/Control/HealthContainer"]
 layout_mode = 2
-texture = ExtResource("4_3yg3m")
-expand_mode = 3
-script = ExtResource("5_vnwdx")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer2/Control/HBoxContainer"]
+[node name="Heart 1" type="TextureRect" parent="CanvasLayer2/Control/HealthContainer/Hearts"]
 layout_mode = 2
 texture = ExtResource("4_3yg3m")
 expand_mode = 3
-script = ExtResource("6_bc4cl")
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer2/Control/HBoxContainer"]
+[node name="Heart 2" type="TextureRect" parent="CanvasLayer2/Control/HealthContainer/Hearts"]
 layout_mode = 2
 texture = ExtResource("4_3yg3m")
 expand_mode = 3
-script = ExtResource("7_10o80")
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer2/Control/HBoxContainer"]
+[node name="Heart 3" type="TextureRect" parent="CanvasLayer2/Control/HealthContainer/Hearts"]
 layout_mode = 2
 texture = ExtResource("4_3yg3m")
 expand_mode = 3
-script = ExtResource("8_x4xk3")
 
-[node name="TextureRect5" type="TextureRect" parent="CanvasLayer2/Control/HBoxContainer"]
+[node name="Heart 4" type="TextureRect" parent="CanvasLayer2/Control/HealthContainer/Hearts"]
 layout_mode = 2
 texture = ExtResource("4_3yg3m")
 expand_mode = 3
-script = ExtResource("9_cbams")
+
+[node name="Heart 5" type="TextureRect" parent="CanvasLayer2/Control/HealthContainer/Hearts"]
+layout_mode = 2
+texture = ExtResource("4_3yg3m")
+expand_mode = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer2/Control"]
 layout_mode = 1

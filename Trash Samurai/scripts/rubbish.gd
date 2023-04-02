@@ -3,7 +3,9 @@ extends RigidBody2D
 @export_enum("Paper", "General", "Food", "Plastic", "Glass") var type: String
 
 var isSelected: bool = false
-	
+
+signal missed()
+
 func _ready():
 	set_freeze_mode(FREEZE_MODE_STATIC)
 	var sprite = get_node("Sprite")
@@ -27,8 +29,12 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
+	print(global_transform.origin)
 	if isSelected:
 		global_transform.origin = get_global_mouse_position()
+	if global_transform.origin.x < -150 || global_transform.origin.x > 1350:
+		missed.emit()
+		queue_free()
 	
 func pickup():
 	set_freeze_enabled(true)

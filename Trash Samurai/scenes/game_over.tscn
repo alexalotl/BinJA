@@ -1,16 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://exdwps3prwdj"]
+[gd_scene load_steps=3 format=3 uid="uid://cte0gs8fgibow"]
 
-[ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://Font/arcadeclassic/ARCADECLASSIC.TTF" id="1_ponsp"]
+[ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://Font/arcadeclassic/ARCADECLASSIC.TTF" id="1_vteq4"]
 
 [sub_resource type="GDScript" id="GDScript_smc5p"]
 script/source = "extends Control
 
-var game_paused = false setget set_paused
-func _unhandled_input(event):
-	if event.is_action_pressed(\"\")
-func set_paused(value):
-	game_paused =value
-	get_tree().paused = game_paused
 "
 
 [node name="Gameover" type="Control"]
@@ -45,7 +39,7 @@ theme_override_constants/separation = 60
 
 [node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_ponsp")
+theme_override_fonts/font = ExtResource("1_vteq4")
 theme_override_font_sizes/font_size = 50
 text = "Game Over
 "
@@ -55,12 +49,12 @@ layout_mode = 2
 
 [node name="Button2" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_ponsp")
+theme_override_fonts/font = ExtResource("1_vteq4")
 theme_override_font_sizes/font_size = 50
 text = "Restart"
 
 [node name="Button3" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_ponsp")
+theme_override_fonts/font = ExtResource("1_vteq4")
 theme_override_font_sizes/font_size = 50
 text = "Quit"
