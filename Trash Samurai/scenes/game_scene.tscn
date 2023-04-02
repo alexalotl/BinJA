@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cg1e475p1gtmd"]
+[gd_scene load_steps=13 format=3 uid="uid://cg1e475p1gtmd"]
 
 [ext_resource type="Script" path="res://scripts/run_game.gd" id="1_3u6wc"]
 [ext_resource type="PackedScene" uid="uid://do71hgeg3ow21" path="res://scenes/bin.tscn" id="2_qpbvm"]
+[ext_resource type="AudioStream" uid="uid://dqfg0810fg7bg" path="res://scenes/0015_master (1).mp3" id="4_0l1in"]
 [ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://font/arcadeclassic/ARCADECLASSIC.TTF" id="4_2dhfq"]
 [ext_resource type="Texture2D" uid="uid://73k7cmp8sel1" path="res://assets/heart.png" id="4_3yg3m"]
 [ext_resource type="Script" path="res://scripts/pause_button.gd" id="6_q3wbb"]
@@ -68,6 +69,10 @@ type = "Glass"
 wait_time = 3.0
 autostart = true
 
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Game"]
+stream = ExtResource("4_0l1in")
+autoplay = true
+
 [node name="UICanvas" type="CanvasLayer" parent="."]
 layer = 0
 follow_viewport_enabled = true
@@ -126,8 +131,8 @@ expand_mode = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UICanvas/Control"]
 layout_mode = 1
-offset_left = 520.0
-offset_right = 820.0
+offset_left = 560.0
+offset_right = 860.0
 offset_bottom = 68.0
 
 [node name="Score" type="Label" parent="UICanvas/Control/HBoxContainer2"]
@@ -171,6 +176,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 texture = ExtResource("7_01knf")
 stretch_mode = 1
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="failure" from="Game/Paper Bin" to="." method="_on_bin_failure"]
 [connection signal="success" from="Game/Paper Bin" to="." method="_on_bin_success"]

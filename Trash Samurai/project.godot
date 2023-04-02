@@ -21,6 +21,7 @@ window/size/viewport_width=540
 window/size/viewport_height=1200
 window/handheld/orientation=1
 window/stretch/mode="canvas_items"
+Global="*res://scripts/global.gd"
 
 [display]
 

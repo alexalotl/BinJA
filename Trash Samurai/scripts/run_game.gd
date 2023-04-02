@@ -10,16 +10,23 @@ var screen_width
 var game
 var rng
 var spawn_timer
+var correct = preload("res://assets/button.mp3")
+var wrong = preload("res://assets/wrong.mp3")
 
 var health: int = 5:
 	set(value):
+		$SFXPlayer.stream = wrong
+		$SFXPlayer.play()
 		health = value
 		health_container.get_child(value).queue_free()
 		if health <= 0:
+			Global.most_recent_score = score
 			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 			
 var score: int = 0:
 	set(value):
+		$SFXPlayer.stream = correct
+		$SFXPlayer.play()
 		score = value
 		print("SCORE SET")
 		score_label.text = "Score: " + str(value)

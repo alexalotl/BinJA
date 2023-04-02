@@ -309,3 +309,5 @@ theme_override_fonts/font = ExtResource("1_4svn3")
 theme_override_font_sizes/font_size = 50
 text = "Game Guide
 "
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
