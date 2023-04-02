@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://70mlem50f551"
-path="res://.godot/imported/glass_bin.png-9192d39dbff4e2905ca1acf01edc9667.ctex"
+uid="uid://cba63vtfrvav1"
+path="res://.godot/imported/milk_carton.png-89fe1fe7d206f31c148105fff6857d14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/glass_bin.png"
-dest_files=["res://.godot/imported/glass_bin.png-9192d39dbff4e2905ca1acf01edc9667.ctex"]
+source_file="res://assets/milk_carton.png"
+dest_files=["res://.godot/imported/milk_carton.png-89fe1fe7d206f31c148105fff6857d14.ctex"]
 
 [params]
 

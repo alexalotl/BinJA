@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfj7j57jlc4jb"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_dxg5b"]
+[ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://font/arcadeclassic/ARCADECLASSIC.TTF" id="2_70gxi"]
+[ext_resource type="Script" path="res://scripts/unpause_button.gd" id="3_7t22i"]
+[ext_resource type="Script" path="res://scripts/load_scene_button.gd" id="4_8b8f7"]
+
+[sub_resource type="GDScript" id="GDScript_iiklt"]
+
+[sub_resource type="Theme" id="Theme_pocuy"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dxg5b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.298039, 0.501961, 0.431373, 0.505882)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_iiklt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_70gxi")
+theme_override_font_sizes/font_size = 50
+text = "Game Paused
+"
+
+[node name="Resume Button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_pocuy")
+theme_override_fonts/font = ExtResource("2_70gxi")
+theme_override_font_sizes/font_size = 50
+text = "Resume"
+script = ExtResource("3_7t22i")
+
+[node name="Restart Button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_70gxi")
+theme_override_font_sizes/font_size = 50
+text = "Restart"
+script = ExtResource("4_8b8f7")
+scene = "res://scenes/game_scene.tscn"
+
+[node name="Menu Button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_70gxi")
+theme_override_font_sizes/font_size = 50
+text = "Menu"
+script = ExtResource("4_8b8f7")
+scene = "res://scenes/menu.tscn"
+
+[connection signal="unpause" from="CenterContainer/VBoxContainer/Resume Button" to="." method="_unpause"]

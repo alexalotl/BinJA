@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://70mlem50f551"
-path="res://.godot/imported/glass_bin.png-9192d39dbff4e2905ca1acf01edc9667.ctex"
+uid="uid://cxoomgo76g00a"
+path="res://.godot/imported/spray_bottle.png-1fae855a65e44561df326f0bb11dbd4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/glass_bin.png"
-dest_files=["res://.godot/imported/glass_bin.png-9192d39dbff4e2905ca1acf01edc9667.ctex"]
+source_file="res://assets/spray_bottle.png"
+dest_files=["res://.godot/imported/spray_bottle.png-1fae855a65e44561df326f0bb11dbd4c.ctex"]
 
 [params]
 

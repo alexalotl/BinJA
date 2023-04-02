@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://o4fd4hetv4mj"]
+[gd_scene load_steps=12 format=3 uid="uid://cg1e475p1gtmd"]
 
 [ext_resource type="Script" path="res://scripts/run_game.gd" id="1_3u6wc"]
-[ext_resource type="PackedScene" uid="uid://gl2o125nda1q" path="res://scenes/bin.tscn" id="2_qpbvm"]
-[ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://Font/arcadeclassic/ARCADECLASSIC.TTF" id="3_pfoeq"]
+[ext_resource type="PackedScene" uid="uid://do71hgeg3ow21" path="res://scenes/bin.tscn" id="2_qpbvm"]
+[ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://font/arcadeclassic/ARCADECLASSIC.TTF" id="4_2dhfq"]
 [ext_resource type="Texture2D" uid="uid://73k7cmp8sel1" path="res://assets/heart.png" id="4_3yg3m"]
-[ext_resource type="Script" path="res://Options.gd" id="10_c2sc3"]
+[ext_resource type="Script" path="res://scripts/pause_button.gd" id="6_q3wbb"]
+[ext_resource type="PackedScene" uid="uid://dfj7j57jlc4jb" path="res://scenes/pause_menu.tscn" id="6_y3353"]
+[ext_resource type="Texture2D" uid="uid://di2fcvnahkoh2" path="res://assets/brick_wall.jpg" id="7_w5n1c"]
 
 [sub_resource type="Theme" id="Theme_a5t78"]
 default_font_size = 40
@@ -12,7 +14,7 @@ default_font_size = 40
 [sub_resource type="GDScript" id="GDScript_qyume"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y8dxw"]
-font = ExtResource("3_pfoeq")
+font = ExtResource("4_2dhfq")
 font_size = 48
 font_color = Color(0, 0, 0, 1)
 
@@ -26,36 +28,51 @@ border_color = Color(0, 0, 0, 1)
 
 [node name="GameScene" type="Node2D" node_paths=PackedStringArray("score_label", "health_container")]
 script = ExtResource("1_3u6wc")
-score_label = NodePath("CanvasLayer2/Control/HBoxContainer2/Score")
-health_container = NodePath("CanvasLayer2/Control/HealthContainer/Hearts")
+score_label = NodePath("UICanvas/Control/HBoxContainer2/Score")
+health_container = NodePath("UICanvas/Control/HealthContainer/Hearts")
 
-[node name="Paper Bin" parent="." instance=ExtResource("2_qpbvm")]
-position = Vector2(837, 454)
+[node name="PauseCanvas" type="CanvasLayer" parent="."]
+layer = 2
 
-[node name="Food Bin" parent="." instance=ExtResource("2_qpbvm")]
-position = Vector2(600, 454)
+[node name="PauseMenu" parent="PauseCanvas" node_paths=PackedStringArray("game") instance=ExtResource("6_y3353")]
+visible = false
+z_as_relative = false
+game = NodePath("../../Game")
+
+[node name="Game" type="Node2D" parent="."]
+
+[node name="Paper Bin" parent="Game" instance=ExtResource("2_qpbvm")]
+position = Vector2(889, 454)
+
+[node name="Metal Bin" parent="Game" instance=ExtResource("2_qpbvm")]
+position = Vector2(1095, 454)
+type = "Metal"
+
+[node name="Food Bin" parent="Game" instance=ExtResource("2_qpbvm")]
+position = Vector2(98, 454)
 type = "Food"
 
-[node name="General Bin" parent="." instance=ExtResource("2_qpbvm")]
-position = Vector2(360, 454)
+[node name="General Bin" parent="Game" instance=ExtResource("2_qpbvm")]
+position = Vector2(496, 454)
 type = "General"
 
-[node name="Plastic Bin" parent="." instance=ExtResource("2_qpbvm")]
-position = Vector2(124, 454)
+[node name="Plastic Bin" parent="Game" instance=ExtResource("2_qpbvm")]
+position = Vector2(294, 454)
 type = "Plastic"
 
-[node name="Glass Bin" parent="." instance=ExtResource("2_qpbvm")]
-position = Vector2(1073, 454)
+[node name="Glass Bin" parent="Game" instance=ExtResource("2_qpbvm")]
+position = Vector2(691, 454)
 type = "Glass"
 
-[node name="SpawnTimer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="Game"]
 wait_time = 3.0
 autostart = true
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="UICanvas" type="CanvasLayer" parent="."]
+layer = 0
 follow_viewport_enabled = true
 
-[node name="Control" type="NinePatchRect" parent="CanvasLayer2"]
+[node name="Control" type="NinePatchRect" parent="UICanvas"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -63,7 +80,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_a5t78")
 
-[node name="HealthContainer" type="HBoxContainer" parent="CanvasLayer2/Control"]
+[node name="HealthContainer" type="HBoxContainer" parent="UICanvas/Control"]
 layout_mode = 1
 offset_left = 20.0
 offset_top = 10.0
@@ -71,54 +88,54 @@ offset_right = 492.0
 offset_bottom = 68.0
 script = SubResource("GDScript_qyume")
 
-[node name="Label" type="Label" parent="CanvasLayer2/Control/HealthContainer"]
+[node name="Label" type="Label" parent="UICanvas/Control/HealthContainer"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_pfoeq")
+theme_override_fonts/font = ExtResource("4_2dhfq")
 theme_override_font_sizes/font_size = 40
 text = "Life :"
 
-[node name="Hearts" type="HBoxContainer" parent="CanvasLayer2/Control/HealthContainer"]
+[node name="Hearts" type="HBoxContainer" parent="UICanvas/Control/HealthContainer"]
 layout_mode = 2
 
-[node name="Heart 1" type="TextureRect" parent="CanvasLayer2/Control/HealthContainer/Hearts"]
-layout_mode = 2
-texture = ExtResource("4_3yg3m")
-expand_mode = 3
-
-[node name="Heart 2" type="TextureRect" parent="CanvasLayer2/Control/HealthContainer/Hearts"]
+[node name="Heart 1" type="TextureRect" parent="UICanvas/Control/HealthContainer/Hearts"]
 layout_mode = 2
 texture = ExtResource("4_3yg3m")
 expand_mode = 3
 
-[node name="Heart 3" type="TextureRect" parent="CanvasLayer2/Control/HealthContainer/Hearts"]
+[node name="Heart 2" type="TextureRect" parent="UICanvas/Control/HealthContainer/Hearts"]
 layout_mode = 2
 texture = ExtResource("4_3yg3m")
 expand_mode = 3
 
-[node name="Heart 4" type="TextureRect" parent="CanvasLayer2/Control/HealthContainer/Hearts"]
+[node name="Heart 3" type="TextureRect" parent="UICanvas/Control/HealthContainer/Hearts"]
 layout_mode = 2
 texture = ExtResource("4_3yg3m")
 expand_mode = 3
 
-[node name="Heart 5" type="TextureRect" parent="CanvasLayer2/Control/HealthContainer/Hearts"]
+[node name="Heart 4" type="TextureRect" parent="UICanvas/Control/HealthContainer/Hearts"]
 layout_mode = 2
 texture = ExtResource("4_3yg3m")
 expand_mode = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer2/Control"]
+[node name="Heart 5" type="TextureRect" parent="UICanvas/Control/HealthContainer/Hearts"]
+layout_mode = 2
+texture = ExtResource("4_3yg3m")
+expand_mode = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UICanvas/Control"]
 layout_mode = 1
 offset_left = 520.0
 offset_right = 820.0
 offset_bottom = 68.0
 
-[node name="Score" type="Label" parent="CanvasLayer2/Control/HBoxContainer2"]
+[node name="Score" type="Label" parent="UICanvas/Control/HBoxContainer2"]
 layout_mode = 2
 text = "Score: 0"
 label_settings = SubResource("LabelSettings_y8dxw")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer2/Control"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="UICanvas/Control"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -129,27 +146,41 @@ offset_right = -20.0
 offset_bottom = 68.0
 grow_horizontal = 0
 
-[node name="Options" type="Button" parent="CanvasLayer2/Control/HBoxContainer3"]
+[node name="Pause Button" type="Button" parent="UICanvas/Control/HBoxContainer3"]
 light_mask = 0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 mouse_force_pass_scroll_events = false
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_pfoeq")
+theme_override_fonts/font = ExtResource("4_2dhfq")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_osjob")
 text = "Options Menu "
-script = ExtResource("10_c2sc3")
+script = ExtResource("6_q3wbb")
 
-[connection signal="failure" from="Paper Bin" to="." method="_on_bin_failure"]
-[connection signal="success" from="Paper Bin" to="." method="_on_bin_success"]
-[connection signal="failure" from="Food Bin" to="." method="_on_bin_failure"]
-[connection signal="success" from="Food Bin" to="." method="_on_bin_success"]
-[connection signal="failure" from="General Bin" to="." method="_on_bin_failure"]
-[connection signal="success" from="General Bin" to="." method="_on_bin_success"]
-[connection signal="failure" from="Plastic Bin" to="." method="_on_bin_failure"]
-[connection signal="success" from="Plastic Bin" to="." method="_on_bin_success"]
-[connection signal="failure" from="Glass Bin" to="." method="_on_bin_failure"]
-[connection signal="success" from="Glass Bin" to="." method="_on_bin_success"]
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_w5n1c")
+
+[connection signal="failure" from="Game/Paper Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="Game/Paper Bin" to="." method="_on_bin_success"]
+[connection signal="failure" from="Game/Metal Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="Game/Metal Bin" to="." method="_on_bin_success"]
+[connection signal="failure" from="Game/Food Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="Game/Food Bin" to="." method="_on_bin_success"]
+[connection signal="failure" from="Game/General Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="Game/General Bin" to="." method="_on_bin_success"]
+[connection signal="failure" from="Game/Plastic Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="Game/Plastic Bin" to="." method="_on_bin_success"]
+[connection signal="failure" from="Game/Glass Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="Game/Glass Bin" to="." method="_on_bin_success"]
+[connection signal="timeout" from="Game/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="pause" from="UICanvas/Control/HBoxContainer3/Pause Button" to="PauseCanvas/PauseMenu" method="_pause"]

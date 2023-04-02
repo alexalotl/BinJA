@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddifvbgjv7tag"
-path="res://.godot/imported/Foil.png-7c6cb9686a4a766596072b54f8c9ba87.ctex"
+uid="uid://ct0sfysoctdvv"
+path="res://.godot/imported/foil.png-1a66626a919eb5828655d6cf7fca4686.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Foil.png"
-dest_files=["res://.godot/imported/Foil.png-7c6cb9686a4a766596072b54f8c9ba87.ctex"]
+source_file="res://assets/foil.png"
+dest_files=["res://.godot/imported/foil.png-1a66626a919eb5828655d6cf7fca4686.ctex"]
 
 [params]
 

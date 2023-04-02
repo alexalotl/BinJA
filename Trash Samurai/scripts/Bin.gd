@@ -22,6 +22,9 @@ func _ready():
 			
 		"Glass":
 			sprite.set_texture(load("res://assets/glass_bin.png"))
+			
+		"Metal":
+			sprite.set_texture(load("res://assets/metal_bin.png"))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

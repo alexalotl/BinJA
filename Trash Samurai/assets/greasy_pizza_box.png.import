@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://70mlem50f551"
-path="res://.godot/imported/glass_bin.png-9192d39dbff4e2905ca1acf01edc9667.ctex"
+uid="uid://clc2ewal35los"
+path="res://.godot/imported/greasy_pizza_box.png-d93792af6564a2c855035f17583750e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/glass_bin.png"
-dest_files=["res://.godot/imported/glass_bin.png-9192d39dbff4e2905ca1acf01edc9667.ctex"]
+source_file="res://assets/greasy_pizza_box.png"
+dest_files=["res://.godot/imported/greasy_pizza_box.png-d93792af6564a2c855035f17583750e7.ctex"]
 
 [params]
 

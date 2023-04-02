@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://70mlem50f551"
-path="res://.godot/imported/glass_bin.png-9192d39dbff4e2905ca1acf01edc9667.ctex"
+uid="uid://c6b3xvispgatt"
+path="res://.godot/imported/coffee_cup.png-cf3c885d5abdc5b15478efc0090f4787.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/glass_bin.png"
-dest_files=["res://.godot/imported/glass_bin.png-9192d39dbff4e2905ca1acf01edc9667.ctex"]
+source_file="res://assets/coffee_cup.png"
+dest_files=["res://.godot/imported/coffee_cup.png-cf3c885d5abdc5b15478efc0090f4787.ctex"]
 
 [params]
 

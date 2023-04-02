@@ -3,11 +3,11 @@ extends Node2D
 @export var score_label: Label
 @export var health_container: Container
 
-var rubbish_types = ["Paper", "General", "Food", "Plastic", "Glass"]
+var rubbish_types = ["Paper", "General", "Food", "Plastic", "Glass", "Metal"]
 
 var screen_height
 var screen_width
-
+var game
 var rng
 
 var health: int = 5:
@@ -26,6 +26,7 @@ var score: int = 0:
 var _rubbish
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	game = get_node("Game")
 	screen_height = 540
 	screen_width = 1200
 	rng = RandomNumberGenerator.new()
@@ -54,11 +55,10 @@ func _on_spawn_timer_timeout():
 	
 	var spawn_impulse_y = -600
 	rubbish.position = Vector2(spawn_x, spawn_y)
-	add_child(rubbish)
+	game.add_child(rubbish)
 	rubbish.missed.connect(_on_rubbish_missed)
 	rubbish.apply_impulse(Vector2(spawn_impulse_x, spawn_impulse_y))
 	
-	pass # Replace with function body.
 
 func _on_rubbish_missed():
 	health -= 1

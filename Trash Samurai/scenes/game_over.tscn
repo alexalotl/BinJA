@@ -1,11 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cte0gs8fgibow"]
+[gd_scene load_steps=3 format=3 uid="uid://d3n06ijni5v2w"]
 
-[ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://Font/arcadeclassic/ARCADECLASSIC.TTF" id="1_vteq4"]
-
-[sub_resource type="GDScript" id="GDScript_smc5p"]
-script/source = "extends Control
-
-"
+[ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://font/arcadeclassic/ARCADECLASSIC.TTF" id="1_bho32"]
+[ext_resource type="Script" path="res://scripts/load_scene_button.gd" id="2_jldhb"]
 
 [node name="Gameover" type="Control"]
 layout_mode = 3
@@ -31,7 +27,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_smc5p")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
 layout_mode = 2
@@ -39,22 +34,23 @@ theme_override_constants/separation = 60
 
 [node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_vteq4")
+theme_override_fonts/font = ExtResource("1_bho32")
 theme_override_font_sizes/font_size = 50
 text = "Game Over
 "
 
-[node name="Control" type="Control" parent="ColorRect/CenterContainer/VBoxContainer"]
+[node name="Restart Button" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="Button2" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_vteq4")
+theme_override_fonts/font = ExtResource("1_bho32")
 theme_override_font_sizes/font_size = 50
 text = "Restart"
+script = ExtResource("2_jldhb")
+scene = "res://scenes/game_scene.tscn"
 
-[node name="Button3" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+[node name="Menu Button" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_vteq4")
+theme_override_fonts/font = ExtResource("1_bho32")
 theme_override_font_sizes/font_size = 50
-text = "Quit"
+text = "Menu"
+script = ExtResource("2_jldhb")
+scene = "res://scenes/menu.tscn"
