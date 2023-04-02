@@ -22,6 +22,12 @@ window/size/viewport_height=1200
 window/handheld/orientation=1
 window/stretch/mode="canvas_items"
 
+[display]
+
+window/size/viewport_width=1200
+window/size/viewport_height=540
+window/stretch/mode="canvas_items"
+
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
@@ -31,3 +37,4 @@ Global="*res://scripts/Global.gd"
 
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
+textures/canvas_textures/default_texture_filter=0

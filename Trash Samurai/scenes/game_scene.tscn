@@ -1,16 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://be2y31r46g186"]
+[gd_scene load_steps=3 format=3 uid="uid://be2y31r46g186"]
 
-[ext_resource type="Script" path="res://scripts/Bin.gd" id="1_3w8vp"]
 [ext_resource type="Script" path="res://scenes/run_game.gd" id="1_4a8ui"]
-[ext_resource type="Script" path="res://scripts/score.gd" id="1_c1k6r"]
-[ext_resource type="Texture2D" uid="uid://m3mlxn1w73ca" path="res://assets/recycle bin.jpg" id="1_k80uc"]
-[ext_resource type="PackedScene" uid="uid://dkjdjlmvcu83i" path="res://scenes/rubbish.tscn" id="4_fs3u3"]
+[ext_resource type="PackedScene" uid="uid://gl2o125nda1q" path="res://scenes/bin.tscn" id="2_qpbvm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r405o"]
-size = Vector2(400, 400)
-
-[node name="GameScene" type="Node2D"]
+[node name="GameScene" type="Node2D" node_paths=PackedStringArray("score_label")]
 script = ExtResource("1_4a8ui")
+score_label = NodePath("CanvasLayer/NinePatchRect/HBoxContainer/Score")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -31,24 +26,38 @@ offset_bottom = 175.0
 [node name="Score" type="Label" parent="CanvasLayer/NinePatchRect/HBoxContainer"]
 layout_mode = 2
 text = "Score: 0"
-script = ExtResource("1_c1k6r")
 
-[node name="Bin" type="Area2D" parent="."]
-position = Vector2(256, 1073)
-scale = Vector2(0.655556, 0.594444)
-script = ExtResource("1_3w8vp")
+[node name="Paper Bin" parent="." instance=ExtResource("2_qpbvm")]
+position = Vector2(837, 454)
 
-[node name="Recycle Bin" type="Sprite2D" parent="Bin"]
-texture = ExtResource("1_k80uc")
+[node name="Food Bin" parent="." instance=ExtResource("2_qpbvm")]
+position = Vector2(600, 454)
+type = "Food"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bin"]
-shape = SubResource("RectangleShape2D_r405o")
+[node name="General Bin" parent="." instance=ExtResource("2_qpbvm")]
+position = Vector2(360, 454)
+type = "General"
 
-[node name="Rubbish2" parent="." instance=ExtResource("4_fs3u3")]
+[node name="Plastic Bin" parent="." instance=ExtResource("2_qpbvm")]
+position = Vector2(124, 454)
+type = "Plastic"
+
+[node name="Glass Bin" parent="." instance=ExtResource("2_qpbvm")]
+position = Vector2(1073, 454)
+type = "Glass"
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
-[connection signal="body_entered" from="Bin" to="Bin" method="_on_body_entered"]
+[connection signal="failure" from="Paper Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="Paper Bin" to="." method="_on_bin_success"]
+[connection signal="failure" from="Food Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="Food Bin" to="." method="_on_bin_success"]
+[connection signal="failure" from="General Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="General Bin" to="." method="_on_bin_success"]
+[connection signal="failure" from="Plastic Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="Plastic Bin" to="." method="_on_bin_success"]
+[connection signal="failure" from="Glass Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="Glass Bin" to="." method="_on_bin_success"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
