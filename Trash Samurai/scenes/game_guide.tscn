@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1n01di1gg7iu"]
+
+[ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://Font/arcadeclassic/ARCADECLASSIC.TTF" id="1_hln6u"]
+[ext_resource type="PackedScene" uid="uid://do71hgeg3ow21" path="res://scenes/bin.tscn" id="2_erv00"]
+
+[sub_resource type="GDScript" id="GDScript_smc5p"]
+script/source = "extends Control
+
+"
+
+[node name="Gameguide" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.392157, 1, 0.0901961)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_smc5p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_hln6u")
+theme_override_font_sizes/font_size = 50
+text = "Game Guide
+"
+
+[node name="Control" type="Control" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Plastic" parent="ColorRect/CenterContainer/VBoxContainer" instance=ExtResource("2_erv00")]
+position = Vector2(-300, 200)
+
+[node name="Label1" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/Plastic"]
+offset_left = -300.0
+offset_top = -580.0
+offset_right = 363.0
+offset_bottom = -532.0
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_hln6u")
+theme_override_font_sizes/font_size = 42
+text = "This is a recycle pin for plastic."
+
+[node name="General" parent="ColorRect/CenterContainer/VBoxContainer" instance=ExtResource("2_erv00")]
+position = Vector2(-80, 200)
+
+[node name="Label2" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/General"]
+offset_left = -280.0
+offset_top = -790.0
+offset_right = 337.0
+offset_bottom = -742.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_hln6u")
+theme_override_font_sizes/font_size = 42
+text = "This is a pin for general waste."
+
+[node name="Food" parent="ColorRect/CenterContainer/VBoxContainer" instance=ExtResource("2_erv00")]
+position = Vector2(140, 200)
+
+[node name="Label3" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/Food"]
+offset_left = -350.0
+offset_top = -580.0
+offset_right = 364.0
+offset_bottom = -532.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_hln6u")
+theme_override_font_sizes/font_size = 42
+text = "This is a recycle pin for food waste."
+
+[node name="Paper" parent="ColorRect/CenterContainer/VBoxContainer" instance=ExtResource("2_erv00")]
+position = Vector2(360, 200)
+
+[node name="Label4" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/Paper"]
+offset_left = -216.0
+offset_top = -790.0
+offset_right = 401.0
+offset_bottom = -742.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_hln6u")
+theme_override_font_sizes/font_size = 42
+text = "This is a recycle pin for paper."
+
+[node name="Glass" parent="ColorRect/CenterContainer/VBoxContainer" instance=ExtResource("2_erv00")]
+position = Vector2(580, 200)
+
+[node name="Label5" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/Glass"]
+offset_left = -350.0
+offset_top = -580.0
+offset_right = 267.0
+offset_bottom = -532.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_hln6u")
+theme_override_font_sizes/font_size = 42
+text = "This is a recycle pin for glass."
