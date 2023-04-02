@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4pyvpam7t1lg"]
+
+[ext_resource type="Script" path="res://scripts/rubbish.gd" id="1_di0yt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lcqcd"]
+radius = 140.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dnr2b"]
+load_path = "res://.godot/imported/Paper.png-b34c15c9f2b988805b4d650a5a8cf02c.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s2o6n"]
+radius = 40.0
+
+[node name="Rubbish" type="RigidBody2D" groups=["pickable", "rubbish"]]
+input_pickable = true
+script = ExtResource("1_di0yt")
+
+[node name="PickableCollider" type="Area2D" parent="."]
+light_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickableCollider"]
+shape = SubResource("CircleShape2D_lcqcd")
+debug_color = Color(0.788235, 0.372549, 0.564706, 0.419608)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = SubResource("CompressedTexture2D_dnr2b")
+
+[node name="CollisionCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s2o6n")
+
+[connection signal="input_event" from="PickableCollider" to="." method="_on_pickable_collider_input_event"]

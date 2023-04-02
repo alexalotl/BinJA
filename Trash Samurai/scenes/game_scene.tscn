@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://be2y31r46g186"]
+
+[ext_resource type="Script" path="res://scenes/run_game.gd" id="1_4a8ui"]
+[ext_resource type="PackedScene" uid="uid://gl2o125nda1q" path="res://scenes/bin.tscn" id="2_qpbvm"]
+
+[node name="GameScene" type="Node2D" node_paths=PackedStringArray("score_label")]
+script = ExtResource("1_4a8ui")
+score_label = NodePath("CanvasLayer/NinePatchRect/HBoxContainer/Score")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/NinePatchRect"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 60.0
+offset_right = 312.0
+offset_bottom = 175.0
+
+[node name="Score" type="Label" parent="CanvasLayer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+text = "Score: 0"
+
+[node name="Paper Bin" parent="." instance=ExtResource("2_qpbvm")]
+position = Vector2(837, 454)
+
+[node name="Food Bin" parent="." instance=ExtResource("2_qpbvm")]
+position = Vector2(600, 454)
+type = "Food"
+
+[node name="General Bin" parent="." instance=ExtResource("2_qpbvm")]
+position = Vector2(360, 454)
+type = "General"
+
+[node name="Plastic Bin" parent="." instance=ExtResource("2_qpbvm")]
+position = Vector2(124, 454)
+type = "Plastic"
+
+[node name="Glass Bin" parent="." instance=ExtResource("2_qpbvm")]
+position = Vector2(1073, 454)
+type = "Glass"
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="failure" from="Paper Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="Paper Bin" to="." method="_on_bin_success"]
+[connection signal="failure" from="Food Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="Food Bin" to="." method="_on_bin_success"]
+[connection signal="failure" from="General Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="General Bin" to="." method="_on_bin_success"]
+[connection signal="failure" from="Plastic Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="Plastic Bin" to="." method="_on_bin_success"]
+[connection signal="failure" from="Glass Bin" to="." method="_on_bin_failure"]
+[connection signal="success" from="Glass Bin" to="." method="_on_bin_success"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
