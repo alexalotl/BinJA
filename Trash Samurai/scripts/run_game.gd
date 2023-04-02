@@ -9,6 +9,7 @@ var screen_height
 var screen_width
 var game
 var rng
+var spawn_timer
 
 var health: int = 5:
 	set(value):
@@ -22,10 +23,16 @@ var score: int = 0:
 		score = value
 		print("SCORE SET")
 		score_label.text = "Score: " + str(value)
+		if score % 5 == 0:
+			spawn_timer.wait_time -= 0.5
+			if spawn_timer.wait_time < 1.0:
+				spawn_timer.wait_time = 1.0
+			
 
 var _rubbish
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	spawn_timer = get_node("Game/SpawnTimer")
 	game = get_node("Game")
 	screen_height = 540
 	screen_width = 1200
@@ -58,7 +65,6 @@ func _on_spawn_timer_timeout():
 	game.add_child(rubbish)
 	rubbish.missed.connect(_on_rubbish_missed)
 	rubbish.apply_impulse(Vector2(spawn_impulse_x, spawn_impulse_y))
-	
 
 func _on_rubbish_missed():
 	health -= 1

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://73k7cmp8sel1" path="res://assets/heart.png" id="4_3yg3m"]
 [ext_resource type="Script" path="res://scripts/pause_button.gd" id="6_q3wbb"]
 [ext_resource type="PackedScene" uid="uid://dfj7j57jlc4jb" path="res://scenes/pause_menu.tscn" id="6_y3353"]
-[ext_resource type="Texture2D" uid="uid://di2fcvnahkoh2" path="res://assets/brick_wall.jpg" id="7_w5n1c"]
+[ext_resource type="Texture2D" uid="uid://c4l2fd0ym6t7t" path="res://assets/brick_wall.png" id="7_01knf"]
 
 [sub_resource type="Theme" id="Theme_a5t78"]
 default_font_size = 40
@@ -168,7 +168,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_w5n1c")
+size_flags_horizontal = 3
+texture = ExtResource("7_01knf")
+stretch_mode = 1
 
 [connection signal="failure" from="Game/Paper Bin" to="." method="_on_bin_failure"]
 [connection signal="success" from="Game/Paper Bin" to="." method="_on_bin_success"]

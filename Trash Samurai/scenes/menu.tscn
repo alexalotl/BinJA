@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.392157, 1, 0.0901961)
+color = Color(0.113725, 0.313726, 0.196078, 1)
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect"]
 layout_mode = 2
@@ -56,6 +56,14 @@ theme_override_font_sizes/font_size = 50
 text = "Play"
 script = ExtResource("2_nq4u5")
 scene = "res://scenes/game_scene.tscn"
+
+[node name="Guide Button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_mdfp7")
+theme_override_font_sizes/font_size = 50
+text = "Guide"
+script = ExtResource("2_nq4u5")
+scene = "res://scenes/game_guide.tscn"
 
 [node name="Quit Button" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2

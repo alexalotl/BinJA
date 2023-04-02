@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ducx8scaldfu0"]
+
+[ext_resource type="Texture2D" uid="uid://dgm88jhyitiq6" path="res://assets/general_bin.png" id="1_1ncnf"]
+[ext_resource type="Script" path="res://scripts/bin_guide.gd" id="1_d8fpy"]
+
+[node name="Bin Guide" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(8, 8)
+script = ExtResource("1_d8fpy")
+type = "Paper"
+
+[node name="Recycle Bin" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_1ncnf")

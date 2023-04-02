@@ -1,14 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1n01di1gg7iu"]
+[gd_scene load_steps=18 format=3 uid="uid://ndmhjx5vptdq"]
 
-[ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://Font/arcadeclassic/ARCADECLASSIC.TTF" id="1_hln6u"]
-[ext_resource type="PackedScene" uid="uid://do71hgeg3ow21" path="res://scenes/bin.tscn" id="2_erv00"]
+[ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://font/arcadeclassic/ARCADECLASSIC.TTF" id="1_4svn3"]
+[ext_resource type="Script" path="res://scripts/load_scene_button.gd" id="2_cwgan"]
+[ext_resource type="PackedScene" uid="uid://ducx8scaldfu0" path="res://scenes/bin_guide.tscn" id="3_mruyo"]
+[ext_resource type="Texture2D" uid="uid://boehe1a7ouucu" path="res://assets/banana_peel.png" id="4_frc3g"]
+[ext_resource type="Texture2D" uid="uid://dbdrvcc4042oa" path="res://assets/bread.png" id="5_2uh1c"]
+[ext_resource type="Texture2D" uid="uid://cxoomgo76g00a" path="res://assets/spray_bottle.png" id="6_2hhsr"]
+[ext_resource type="Texture2D" uid="uid://cba63vtfrvav1" path="res://assets/milk_carton.png" id="7_lvq6x"]
+[ext_resource type="Texture2D" uid="uid://clc2ewal35los" path="res://assets/greasy_pizza_box.png" id="8_5tgyy"]
+[ext_resource type="Texture2D" uid="uid://bs2e1kmibesbc" path="res://assets/drinking_glass.png" id="9_ckaxi"]
+[ext_resource type="Texture2D" uid="uid://c6b3xvispgatt" path="res://assets/coffee_cup.png" id="10_5b3ts"]
+[ext_resource type="Texture2D" uid="uid://c362mxewcxdjo" path="res://assets/bulb.png" id="11_j2jlw"]
+[ext_resource type="Texture2D" uid="uid://31c1jr1lcfbe" path="res://assets/chips.png" id="12_7lf7x"]
+[ext_resource type="Texture2D" uid="uid://cvr8eofrv76ql" path="res://assets/glass_bottle.png" id="13_ijisn"]
+[ext_resource type="Texture2D" uid="uid://bp0fihqik4h8" path="res://assets/pizza_box.png" id="14_m4jhw"]
+[ext_resource type="Texture2D" uid="uid://bg5rwqo6or07b" path="res://assets/paper.png" id="15_5m8ya"]
+[ext_resource type="Texture2D" uid="uid://dk0ux55dqxuo0" path="res://assets/tin_can.png" id="16_rjls2"]
+[ext_resource type="Texture2D" uid="uid://ct0sfysoctdvv" path="res://assets/foil.png" id="17_6csmf"]
 
-[sub_resource type="GDScript" id="GDScript_smc5p"]
-script/source = "extends Control
-
-"
-
-[node name="Gameguide" type="Control"]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,94 +33,279 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.392157, 1, 0.0901961)
+color = Color(0.113725, 0.313726, 0.196078, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 400.0
+offset_top = -27.0
+offset_right = 658.0
+offset_bottom = 27.0
 grow_vertical = 2
-script = SubResource("GDScript_smc5p")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 60
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_direction = 2
+layout_mode = 0
+offset_right = 107.0
+offset_bottom = 39.0
+scale = Vector2(6, 6)
+theme_override_constants/h_separation = 65
+theme_override_constants/v_separation = 55
+columns = 3
 
-[node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+[node name="food_guide" parent="GridContainer" instance=ExtResource("3_mruyo")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_hln6u")
+type = "Food"
+
+[node name="Label" type="Label" parent="GridContainer/food_guide"]
+layout_mode = 2
+offset_left = 30.0
+offset_top = 5.0
+offset_right = 741.0
+offset_bottom = 65.0
+scale = Vector2(0.13, 0.13)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_4svn3")
+theme_override_font_sizes/font_size = 42
+text = "Food Waste"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/food_guide"]
+layout_mode = 0
+offset_left = 31.8333
+offset_top = 14.3333
+offset_right = 71.8333
+offset_bottom = 54.3333
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_frc3g")
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/food_guide"]
+layout_mode = 0
+offset_left = 43.8333
+offset_top = 14.3333
+offset_right = 83.8333
+offset_bottom = 54.3333
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_2uh1c")
+
+[node name="plastic_guide" parent="GridContainer" instance=ExtResource("3_mruyo")]
+layout_mode = 2
+type = "Plastic"
+
+[node name="Label" type="Label" parent="GridContainer/plastic_guide"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 5.0
+offset_right = 741.0
+offset_bottom = 65.0
+scale = Vector2(0.13, 0.13)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_4svn3")
+theme_override_font_sizes/font_size = 42
+text = "Plastic Waste"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/plastic_guide"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 14.3333
+offset_right = 76.0
+offset_bottom = 54.3333
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_2hhsr")
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/plastic_guide"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 14.3333
+offset_right = 88.0
+offset_bottom = 54.3333
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_lvq6x")
+
+[node name="general_guide" parent="GridContainer" instance=ExtResource("3_mruyo")]
+layout_mode = 2
+type = "General"
+
+[node name="Label" type="Label" parent="GridContainer/general_guide"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 5.0
+offset_right = 741.0
+offset_bottom = 65.0
+scale = Vector2(0.13, 0.13)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_4svn3")
+theme_override_font_sizes/font_size = 42
+text = "General Waste"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/general_guide"]
+layout_mode = 0
+offset_left = 41.1667
+offset_top = 14.3333
+offset_right = 81.1667
+offset_bottom = 54.3333
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_5tgyy")
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/general_guide"]
+layout_mode = 0
+offset_left = 53.1667
+offset_top = 14.3333
+offset_right = 93.1667
+offset_bottom = 54.3333
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_ckaxi")
+
+[node name="TextureRect3" type="TextureRect" parent="GridContainer/general_guide"]
+layout_mode = 0
+offset_left = 35.3334
+offset_top = 24.3333
+offset_right = 75.3334
+offset_bottom = 64.3333
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_5b3ts")
+
+[node name="TextureRect4" type="TextureRect" parent="GridContainer/general_guide"]
+layout_mode = 0
+offset_left = 47.3334
+offset_top = 24.3333
+offset_right = 87.3334
+offset_bottom = 64.3333
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_j2jlw")
+
+[node name="TextureRect5" type="TextureRect" parent="GridContainer/general_guide"]
+layout_mode = 0
+offset_left = 30.1667
+offset_top = 14.3333
+offset_right = 70.1667
+offset_bottom = 54.3333
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("12_7lf7x")
+
+[node name="glass_guide" parent="GridContainer" instance=ExtResource("3_mruyo")]
+layout_mode = 2
+type = "Glass"
+
+[node name="Label" type="Label" parent="GridContainer/glass_guide"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 5.0
+offset_right = 741.0
+offset_bottom = 65.0
+scale = Vector2(0.13, 0.13)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_4svn3")
+theme_override_font_sizes/font_size = 42
+text = "Glass Waste"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/glass_guide"]
+layout_mode = 0
+offset_left = 36.8333
+offset_top = 14.3333
+offset_right = 76.8333
+offset_bottom = 54.3333
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("13_ijisn")
+
+[node name="paper_guide" parent="GridContainer" instance=ExtResource("3_mruyo")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GridContainer/paper_guide"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 5.0
+offset_right = 741.0
+offset_bottom = 65.0
+scale = Vector2(0.13, 0.13)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_4svn3")
+theme_override_font_sizes/font_size = 42
+text = "Paper Waste"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/paper_guide"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 14.3333
+offset_right = 76.0
+offset_bottom = 54.3333
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("14_m4jhw")
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/paper_guide"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 14.3333
+offset_right = 88.0
+offset_bottom = 54.3333
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("15_5m8ya")
+
+[node name="metal_guide" parent="GridContainer" instance=ExtResource("3_mruyo")]
+layout_mode = 2
+type = "Metal"
+
+[node name="Label" type="Label" parent="GridContainer/metal_guide"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 5.0
+offset_right = 741.0
+offset_bottom = 65.0
+scale = Vector2(0.13, 0.13)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_4svn3")
+theme_override_font_sizes/font_size = 42
+text = "Metal Waste"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/metal_guide"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 14.3333
+offset_right = 76.0
+offset_bottom = 54.3333
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("16_rjls2")
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer/metal_guide"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 14.3333
+offset_right = 88.0
+offset_bottom = 54.3333
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("17_6csmf")
+
+[node name="Menu Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 699.0
+offset_top = -29.5
+offset_right = 819.0
+offset_bottom = 29.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_4svn3")
+theme_override_font_sizes/font_size = 50
+text = "Menu"
+script = ExtResource("2_cwgan")
+scene = "res://scenes/menu.tscn"
+
+[node name="Label" type="Label" parent="Menu Button"]
+layout_mode = 2
+offset_left = -299.0
+offset_top = 2.5
+offset_right = -41.0
+offset_bottom = 56.5
+theme_override_fonts/font = ExtResource("1_4svn3")
 theme_override_font_sizes/font_size = 50
 text = "Game Guide
 "
-
-[node name="Control" type="Control" parent="ColorRect/CenterContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Plastic" parent="ColorRect/CenterContainer/VBoxContainer" instance=ExtResource("2_erv00")]
-position = Vector2(-300, 200)
-
-[node name="Label1" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/Plastic"]
-offset_left = -300.0
-offset_top = -580.0
-offset_right = 363.0
-offset_bottom = -532.0
-size_flags_vertical = 1
-size_flags_stretch_ratio = 0.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_hln6u")
-theme_override_font_sizes/font_size = 42
-text = "This is a recycle pin for plastic."
-
-[node name="General" parent="ColorRect/CenterContainer/VBoxContainer" instance=ExtResource("2_erv00")]
-position = Vector2(-80, 200)
-
-[node name="Label2" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/General"]
-offset_left = -280.0
-offset_top = -790.0
-offset_right = 337.0
-offset_bottom = -742.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_hln6u")
-theme_override_font_sizes/font_size = 42
-text = "This is a pin for general waste."
-
-[node name="Food" parent="ColorRect/CenterContainer/VBoxContainer" instance=ExtResource("2_erv00")]
-position = Vector2(140, 200)
-
-[node name="Label3" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/Food"]
-offset_left = -350.0
-offset_top = -580.0
-offset_right = 364.0
-offset_bottom = -532.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_hln6u")
-theme_override_font_sizes/font_size = 42
-text = "This is a recycle pin for food waste."
-
-[node name="Paper" parent="ColorRect/CenterContainer/VBoxContainer" instance=ExtResource("2_erv00")]
-position = Vector2(360, 200)
-
-[node name="Label4" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/Paper"]
-offset_left = -216.0
-offset_top = -790.0
-offset_right = 401.0
-offset_bottom = -742.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_hln6u")
-theme_override_font_sizes/font_size = 42
-text = "This is a recycle pin for paper."
-
-[node name="Glass" parent="ColorRect/CenterContainer/VBoxContainer" instance=ExtResource("2_erv00")]
-position = Vector2(580, 200)
-
-[node name="Label5" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/Glass"]
-offset_left = -350.0
-offset_top = -580.0
-offset_right = 267.0
-offset_bottom = -532.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_hln6u")
-theme_override_font_sizes/font_size = 42
-text = "This is a recycle pin for glass."

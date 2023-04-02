@@ -1,12 +1,9 @@
-extends Area2D
+extends Control
 
-@export_enum("Paper", "General", "Food", "Plastic", "Glass") var type: String
-var label
+@export_enum("Paper", "General", "Food", "Plastic", "Glass", "Metal") var type: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	label =get_child("Label")
-	label.hide()
 	var sprite = get_node("Recycle Bin")
 	match type:
 		"Paper":
@@ -32,13 +29,3 @@ func _ready():
 func _process(delta):
 	pass
 
-
-
-func _input_event(viewport, event, shape_idx):
-	if event is InputEventScreenTouch :
-		if event.pressed :
-			label.show()
-		else:
-			label.hide()
-		
-	
