@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://exdwps3prwdj"]
+
+[ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://Font/arcadeclassic/ARCADECLASSIC.TTF" id="1_ponsp"]
+
+[sub_resource type="GDScript" id="GDScript_smc5p"]
+script/source = "extends Control
+
+var game_paused = false setget set_paused
+func _unhandled_input(event):
+	if event.is_action_pressed(\"\")
+func set_paused(value):
+	game_paused =value
+	get_tree().paused = game_paused
+"
+
+[node name="Gameover" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.392157, 1, 0.0901961)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_smc5p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ponsp")
+theme_override_font_sizes/font_size = 50
+text = "Game Over
+"
+
+[node name="Control" type="Control" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ponsp")
+theme_override_font_sizes/font_size = 50
+text = "Restart"
+
+[node name="Button3" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ponsp")
+theme_override_font_sizes/font_size = 50
+text = "Quit"

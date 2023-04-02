@@ -1,13 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnlmbqr1edic0"]
+[gd_scene load_steps=15 format=3 uid="uid://dqj3jxhi3b4o5"]
 
 [ext_resource type="Texture2D" uid="uid://m3mlxn1w73ca" path="res://assets/recycle bin.jpg" id="1_1it6p"]
 [ext_resource type="Texture2D" uid="uid://7puaeiocmmge" path="res://assets/paper.png" id="2_twnah"]
 [ext_resource type="Script" path="res://Paper.gd" id="3_dwmax"]
 [ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://Font/arcadeclassic/ARCADECLASSIC.TTF" id="4_6du8l"]
 [ext_resource type="Texture2D" uid="uid://73k7cmp8sel1" path="res://UI Image/heart.png" id="4_kmft6"]
+[ext_resource type="Script" path="res://TextureRect.gd" id="6_vgliq"]
+[ext_resource type="Script" path="res://TextureRect2.gd" id="7_0y8vg"]
+[ext_resource type="Script" path="res://TextureRect3.gd" id="8_xbci7"]
+[ext_resource type="Script" path="res://TextureRect4.gd" id="9_28fml"]
+[ext_resource type="Script" path="res://TextureRect5.gd" id="10_jbgq2"]
+[ext_resource type="Script" path="res://Options.gd" id="11_a1yjd"]
 
 [sub_resource type="Theme" id="Theme_v2b3g"]
 default_font_size = 40
+
+[sub_resource type="GDScript" id="GDScript_alnfu"]
+script/source = "extends HBoxContainer
+
+func lose_heart(value):
+	if (value ==1):
+	    TextureRect5.visible =false
+	    
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7abv"]
 bg_color = Color(0, 0.392157, 1, 0)
@@ -44,6 +59,7 @@ layout_mode = 0
 offset_top = 100.0
 offset_right = 462.0
 offset_bottom = 158.0
+script = SubResource("GDScript_alnfu")
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer"]
 layout_mode = 2
@@ -57,26 +73,31 @@ text = "Life :"
 layout_mode = 2
 texture = ExtResource("4_kmft6")
 expand_mode = 3
+script = ExtResource("6_vgliq")
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_kmft6")
 expand_mode = 3
+script = ExtResource("7_0y8vg")
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_kmft6")
 expand_mode = 3
+script = ExtResource("8_xbci7")
 
 [node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_kmft6")
 expand_mode = 3
+script = ExtResource("9_28fml")
 
 [node name="TextureRect5" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_kmft6")
 expand_mode = 3
+script = ExtResource("10_jbgq2")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -111,3 +132,4 @@ theme_override_fonts/font = ExtResource("4_6du8l")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_w7abv")
 text = "Options Menu "
+script = ExtResource("11_a1yjd")
