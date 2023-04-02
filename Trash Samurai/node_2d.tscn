@@ -1,8 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7b3kw6qanas7"]
+[gd_scene load_steps=8 format=3 uid="uid://cywmlt8wdp1rc"]
 
 [ext_resource type="Texture2D" uid="uid://m3mlxn1w73ca" path="res://assets/recycle bin.jpg" id="1_1it6p"]
 [ext_resource type="Texture2D" uid="uid://7puaeiocmmge" path="res://assets/paper.png" id="2_twnah"]
 [ext_resource type="Script" path="res://Paper.gd" id="3_dwmax"]
+[ext_resource type="FontFile" uid="uid://c62tv23541ygy" path="res://Font/arcadeclassic/ARCADECLASSIC.TTF" id="4_6du8l"]
+[ext_resource type="Texture2D" uid="uid://73k7cmp8sel1" path="res://UI Image/heart.png" id="4_kmft6"]
+
+[sub_resource type="Theme" id="Theme_v2b3g"]
+default_font_size = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7abv"]
+bg_color = Color(0, 0.392157, 1, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
 
 [node name="Node2D" type="Node2D"]
 
@@ -16,3 +29,85 @@ position = Vector2(809, 1578)
 scale = Vector2(0.066896, 0.0468418)
 texture = ExtResource("2_twnah")
 script = ExtResource("3_dwmax")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_v2b3g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_top = 100.0
+offset_right = 462.0
+offset_bottom = 158.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_6du8l")
+theme_override_font_sizes/font_size = 40
+text = "Life :"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_kmft6")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_kmft6")
+expand_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_kmft6")
+expand_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_kmft6")
+expand_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_kmft6")
+expand_mode = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 100.0
+offset_right = 762.0
+offset_bottom = 158.0
+
+[node name="Scorelabel" type="Label" parent="CanvasLayer/Control/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_6du8l")
+theme_override_font_sizes/font_size = 40
+text = "Score : 0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 762.0
+offset_top = 100.0
+offset_right = 1062.0
+offset_bottom = 158.0
+
+[node name="Options" type="Button" parent="CanvasLayer/Control/HBoxContainer3"]
+light_mask = 0
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_6du8l")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_w7abv")
+text = "Options Menu "
